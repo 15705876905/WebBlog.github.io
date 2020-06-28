@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Vue的学习 | Cadben&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.5.2">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="我的个人网站">
+    <link rel="preload" href="/assets/css/0.styles.d727f307.css" as="style"><link rel="preload" href="/assets/js/app.68dc9f1d.js" as="script"><link rel="preload" href="/assets/js/2.abe1b4b2.js" as="script"><link rel="preload" href="/assets/js/10.3bcb86e0.js" as="script"><link rel="prefetch" href="/assets/js/3.6b8a80cf.js"><link rel="prefetch" href="/assets/js/4.34afe534.js"><link rel="prefetch" href="/assets/js/5.6a869c79.js"><link rel="prefetch" href="/assets/js/6.a9e29e08.js"><link rel="prefetch" href="/assets/js/7.6cd37893.js"><link rel="prefetch" href="/assets/js/8.551b25d8.js"><link rel="prefetch" href="/assets/js/9.9f37ff19.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d727f307.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">Cadben's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/js/" class="nav-link">
+  学习
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link">
+  TimeLine
+</a></div><div class="nav-item"><a href="/es6/" class="nav-link">
+  Contact
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/js/" class="nav-link">
+  学习
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link">
+  TimeLine
+</a></div><div class="nav-item"><a href="/es6/" class="nav-link">
+  Contact
+</a></div> <!----></nav>  <!----> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="vue的学习"><a href="#vue的学习" class="header-anchor">#</a> Vue的学习</h1> <h4 id="一、方法"><a href="#一、方法" class="header-anchor">#</a> 一、方法</h4> <blockquote><p>methods:{</p> <p>​	name:function(){},//es5写法,</p> <p>name(){}//es6写法</p> <p>}</p></blockquote> <h4 id="二、数组"><a href="#二、数组" class="header-anchor">#</a> 二、数组</h4> <h4 id="三、组件"><a href="#三、组件" class="header-anchor">#</a> 三、组件</h4> <h5 id="props传值"><a href="#props传值" class="header-anchor">#</a> props传值</h5> <ul><li>在props中使用驼峰的形式，模板中需要使用短横线的形式</li> <li>字符串形式的模板中没有这个限制</li></ul> <h5 id="注册"><a href="#注册" class="header-anchor">#</a> 注册</h5> <div class="language- extra-class"><pre class="language-text"><code>Vue.component('button-counter', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  props:['menuTitle'],//&lt;button-counter menu-title=&quot;hello&quot;&gt;&lt;/button-counter&gt;
+  template: '&lt;button v-on:click=&quot;count++&quot;&gt;You clicked me {{ count }} {{menuTitle}} times.&lt;/button&gt;'
+})
+在html中直接使用 &lt;button-counter&gt;&lt;/button-counter&gt;
+
+或者直接在components中注册（局部组件）
+components: {
+        buttontemplate: {
+            template: '&lt;div&gt;123123123&lt;/div&gt;'
+        }
+}
+</code></pre></div><p>组件也必须包含一个根元素</p> <h5 id="组件间的数据交互"><a href="#组件间的数据交互" class="header-anchor">#</a> 组件间的数据交互</h5> <p>1、事件通信</p> <div class="language- extra-class"><pre class="language-text"><code>var event=new Vue()
+</code></pre></div><p>2、监听事件和销毁</p> <div class="language- extra-class"><pre class="language-text"><code>event.$on('add-todo',addtodo) //在mounted中监听事件
+event.$off('add-todo')
+</code></pre></div><p>3、触发事件</p> <div class="language- extra-class"><pre class="language-text"><code>event.$emit('add-todo',id)
+</code></pre></div><h5 id="插槽"><a href="#插槽" class="header-anchor">#</a> 插槽</h5> <p>template可以包裹。</p> <p>定义slot名字，可以在引用的时候，规定。</p> <p>作用域槽</p> <blockquote></blockquote> <h4 id="四、webpack打包-vue项目"><a href="#四、webpack打包-vue项目" class="header-anchor">#</a> 四、Webpack打包 Vue项目</h4> <blockquote><p>vue init webpack 项目名</p> <p>前提需要安装vue/cli，webpack</p></blockquote> <h4 id="五、vue-cli-运行"><a href="#五、vue-cli-运行" class="header-anchor">#</a> 五、Vue-cli 运行</h4> <ul><li>开发模式运行 npm run dev</li> <li>部署模式运行 npm run build</li></ul> <h2 id="nodejs"><a href="#nodejs" class="header-anchor">#</a> NodeJs</h2> <h4 id="expresss"><a href="#expresss" class="header-anchor">#</a> expresss</h4> <h5 id="部署项目"><a href="#部署项目" class="header-anchor">#</a> 部署项目</h5> <blockquote><p>express (项目名)</p></blockquote> <h5 id="post和get"><a href="#post和get" class="header-anchor">#</a> Post和Get</h5> <blockquote><p>Post 获取参数 应该在express模块添加以下代码</p> <p>app.use(bodyParser.json());</p> <p>app.use(bodyParser.urlencoded({ extended: true }));</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.68dc9f1d.js" defer></script><script src="/assets/js/2.abe1b4b2.js" defer></script><script src="/assets/js/10.3bcb86e0.js" defer></script>
+  </body>
+</html>
